@@ -1,0 +1,215 @@
+{
+  "name": "ai-consensus-engine",
+  "displayName": "AI Consensus Engine",
+  "description": "Revolutionary AI collaboration platform - harness collective intelligence from multiple AI models with advanced consensus algorithms, semantic analysis, and intelligent voting systems",
+  "version": "1.0.0",
+  "publisher": "YourPublisher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ai-consensus-engine.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Machine Learning",
+    "Chat"
+  ],
+  "keywords": [
+    "ai",
+    "chat",
+    "chat-participant",
+    "claude",
+    "copilot",
+    "council",
+    "deliberation",
+    "ensemble",
+    "gemini",
+    "gpt",
+    "llm",
+    "multi-model",
+    "synthesis"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "consensus",
+        "name": "consensus",
+        "description": "Get AI consensus through multi-model collaboration with semantic analysis and intelligent voting",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "quick",
+            "description": "Quick consensus with minimal models"
+          },
+          {
+            "name": "debate",
+            "description": "Deep analysis with cross-validation"
+          },
+          {
+            "name": "vote",
+            "description": "Weighted voting mode with confidence scores"
+          },
+          {
+            "name": "analyze",
+            "description": "Semantic similarity analysis across responses"
+          },
+          {
+            "name": "models",
+            "description": "List available AI models"
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "consensus.openPanel",
+        "title": "Open Consensus Panel",
+        "category": "AI Consensus Engine"
+      },
+      {
+        "command": "consensus.refresh",
+        "title": "Refresh Settings",
+        "category": "AI Consensus Engine",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "consensus.exportResults",
+        "title": "Export Consensus Results",
+        "category": "AI Consensus Engine"
+      },
+      {
+        "command": "consensus.compareModels",
+        "title": "Compare Model Performance",
+        "category": "AI Consensus Engine"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "consensus-sidebar",
+          "title": "AI Consensus Engine",
+          "icon": "media/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "consensus-sidebar": [
+        {
+          "type": "webview",
+          "id": "consensusSidebar",
+          "name": "Consensus Panel"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI Consensus Engine",
+      "properties": {
+        "consensus.size": {
+          "type": "string",
+          "enum": [
+            "minimal",
+            "standard",
+            "extended",
+            "maximum"
+          ],
+          "enumDescriptions": [
+            "Consult 2 models (fastest)",
+            "Consult 3 models (balanced)",
+            "Consult 4 models (comprehensive)",
+            "Consult 5+ models (maximum consensus)"
+          ],
+          "default": "standard",
+          "description": "Number of models for consensus building"
+        },
+        "consensus.member1": {
+          "type": "string",
+          "default": "gpt-4",
+          "description": "First AI model in consensus pool"
+        },
+        "consensus.member2": {
+          "type": "string",
+          "default": "gpt-4o",
+          "description": "Second AI model in consensus pool"
+        },
+        "consensus.member3": {
+          "type": "string",
+          "default": "claude-3.5-sonnet",
+          "description": "Third AI model in consensus pool"
+        },
+        "consensus.member4": {
+          "type": "string",
+          "default": "gemini-1.5-pro",
+          "description": "Fourth AI model in consensus pool"
+        },
+        "consensus.member5": {
+          "type": "string",
+          "default": "gpt-4o-mini",
+          "description": "Fifth AI model in consensus pool"
+        },
+        "consensus.synthesisModel": {
+          "type": "string",
+          "default": "gpt-4",
+          "description": "Model for intelligent consensus synthesis"
+        },
+        "consensus.enableCrossValidation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable cross-validation and peer review"
+        },
+        "consensus.enableVotingMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable weighted voting with confidence scores"
+        },
+        "consensus.enableSemanticAnalysis": {
+          "type": "boolean",
+          "default": true,
+          "description": "Analyze semantic similarity across responses"
+        },
+        "consensus.streamResponses": {
+          "type": "boolean",
+          "default": true,
+          "description": "Stream responses in real-time"
+        },
+        "consensus.showConfidenceScores": {
+          "type": "boolean",
+          "default": true,
+          "description": "Display confidence scores for each response"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package:vsix": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "ts-loader": "^9.5.1",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "extensionDependencies": [
+    "github.copilot-chat"
+  ],
+  "license": "MIT"
+}
